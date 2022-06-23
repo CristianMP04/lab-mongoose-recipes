@@ -55,7 +55,7 @@ mongoose
     
   })
 
-  .then(() => { mongoose.connection.close()
+  .then((response) => { mongoose.connection.close()
 })
 
 
