@@ -43,7 +43,10 @@ mongoose
   })
 
   .then((response) => {
-    
+    return Recipe.findOneAndUpdate(
+      { title: "Rigatoni alla Genovese" },
+      { duration: 100 }
+    );
   })
 
 
