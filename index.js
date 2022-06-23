@@ -49,6 +49,16 @@ mongoose
     );
   })
 
+  .then(() => {
+    console.log("Eliminado!");
+    return Recipe.deleteOne({title: "Carrot Cake"})
+    
+  })
+
+  .then(() => { mongoose.connection.close()
+})
+
+
 
   
   
