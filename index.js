@@ -1,11 +1,13 @@
 const mongoose = require('mongoose');
 
+
+
 // Import of the model Recipe from './models/Recipe.model.js'
 const Recipe = require('./models/Recipe.model');
 // Import of the data from './data.json'
 const data = require('./data');
 
-const MONGODB_URI = 'mongodb://localhost:27017/recipe-app';
+const MONGODB_URI = 'mongodb://0.0.0.0:27017/recipe-app';
 
 // Connection to the database "recipe-app"
 mongoose
@@ -16,8 +18,38 @@ mongoose
     return Recipe.deleteMany()
   })
   .then(() => {
-    // Run your code here, after you have insured that the connection was made
+    return Recipe.create({
+      "title": "Coca San Juan",
+      "level": "Amateur Chef",
+      "ingredients": [
+      "18 g. levadura fresca de panadería",
+      "70 g. de agua",
+      "50 g. de azúcar blanca",
+      "5 g. de sal",
+      "75 g. de huevos M (1 ó 2 unidades)",
+      "50 g. de mantequilla",
+      "75 g. de piñones",
+      "Ralladura 1/2 limón",
+      "4 yemas de huevos grandes XL",
+      "125 g. azúcar",
+      "50 g. fécula de maíz",
+      "La piel de un limón"],
+      "cuisine": "Ticipal Catalan"
+    })
   })
+
+  .then((response) => {
+    return Recipe.insertMany(data);
+  })
+
+  .then((response) => {
+    
+  })
+
+
+  
+  
+  
   .catch(error => {
     console.error('Error connecting to the database', error);
   });
